@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -49,6 +50,15 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
 
+                WebView wv=(WebView)findViewById(R.id.webView);
+                wv.setWebViewClient(new Browser());
+                wv.getSettings().setLoadsImagesAutomatically(true);
+                wv.getSettings().setJavaScriptEnabled(true);
+                wv.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
+                wv.loadUrl(url);
+
+                //do it with webView
+                /*
                 //initiate browser
                 try {
                     Intent browserIntent=new Intent(Intent.ACTION_VIEW, Uri.parse(url));
@@ -57,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "No application found that can handle the request", Toast.LENGTH_LONG).show();
                     e.printStackTrace();
                 }
+                */
             }
 
         };
